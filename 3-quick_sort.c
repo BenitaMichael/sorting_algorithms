@@ -1,8 +1,10 @@
 #include "sort.h"
 
-void swap_function(int *a, int *b)
+void swap_function(int *a, int *b);
 int lomuto_partition(int *array, size_t size, int left, int right);
 void lomuto_sort(int *array, size_t size, int left, int right);
+void quick_sort(int *array, size_t size);
+
 
 /**
  * swap_function - function to swap two integers in an
@@ -19,7 +21,6 @@ void swap_function(int *a, int *b)
 	*b = tmp;
 }
 
-
 /**
  * lomuto_partition - function used to perform the Lomuto partition scheme
  * on a subset of an array of integers
@@ -30,31 +31,30 @@ void swap_function(int *a, int *b)
  */
 int lomuto_partition(int *array, size_t size, int left, int right)
 {
-	int *partitionElement, top, down;
+	int *pivot, top, bottom;
 
-	partitionElement = array + right;
-	for (top = down = left; down < right; down++)
+	pivot = array + right;
+	for (top = bottom = left; bottom < right; bottom++)
 	{
-		if (array[down] < *partitionElement)
+		if (array[bottom] < *pivot)
 		{
-			if (top < down)
+			if (top < bottom)
 			{
-				swap_function(array + down, array + top);
+				swap_function(array + bottom, array + top);
 				print_array(array, size);
 			}
 			top++;
 		}
 	}
 
-	if (array[top] > *partitionElement)
+	if (array[top] > *pivot)
 	{
-		swap_function(array + top, partitionElement);
+		swap_ints(array + top, pivot);
 		print_array(array, size);
 	}
 
 	return (top);
 }
-
 
 /**
  * lomuto_sort -  function is an implementation of the quicksort
@@ -67,13 +67,13 @@ int lomuto_partition(int *array, size_t size, int left, int right)
  */
 void lomuto_sort(int *array, size_t size, int left, int right)
 {
-	int ele;
+	int a;
 
 	if (right - left > 0)
 	{
-		ele = lomuto_partition(array, size, left, right);
-		lomuto_sort(array, size, left, ele - 1);
-		lomuto_sort(array, size, ele + 1, right);
+		a = lomuto_partition(array, size, left, right);
+		lomuto_sort(array, size, left, a - 1);
+		lomuto_sort(array, size, a + 1, right);
 	}
 }
 
