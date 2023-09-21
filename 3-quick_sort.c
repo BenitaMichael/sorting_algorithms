@@ -1,7 +1,24 @@
 #include "sort.h"
 
+void swap_function(int *a, int *b)
 int lomuto_partition(int *array, size_t size, int left, int right);
 void lomuto_sort(int *array, size_t size, int left, int right);
+
+/**
+ * swap_function - function to swap two integers in an
+ * array using a temp storage
+ * @a: The first integer
+ * @b: The second integer
+ */
+void swap_function(int *a, int *b)
+{
+	int tmp;
+
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
+
 
 /**
  * lomuto_partition - function used to perform the Lomuto partition scheme
