@@ -9,8 +9,7 @@
  */
 int maximum_number(int *array, int size)
 {
-	int a;
-	int max_num;
+	int max_num, a;
 
 	for (max_num = array[0], a = 1; a < size; a++)
 	{
