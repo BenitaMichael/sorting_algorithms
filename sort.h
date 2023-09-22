@@ -8,8 +8,10 @@
 #define UP 0
 #define DOWN 1
 
+
+/* For cock_tail sort algorithm */
 /**
- * enum bool - Representation of Boolean values
+ * enum bool - Enumeration of Boolean values.
  * @false: Equals (0)
  * @true: Equals (1)
  */

@@ -1,8 +1,8 @@
 #include "sort.h"
 
 void swap_function(int *a, int *b);
-int lomuto_partition(int *array, size_t size, int left, int right);
-void lomuto_sort(int *array, size_t size, int left, int right);
+int partition(int *array, size_t size, int left, int right);
+void sort(int *array, size_t size, int left, int right);
 void quick_sort(int *array, size_t size);
 
 
@@ -22,7 +22,7 @@ void swap_function(int *a, int *b)
 }
 
 /**
- * lomuto_partition - function used to perform the Lomuto partition scheme
+ * partition - function used to perform the Lomuto partition scheme
  * on a subset of an array of integers
  * @array: represents the array
  * @size: size of the array
@@ -30,7 +30,7 @@ void swap_function(int *a, int *b)
  * @right: The ending index of the subset to order
  * Return: The final partition index
  */
-int lomuto_partition(int *array, size_t size, int left, int right)
+int partition(int *array, size_t size, int left, int right)
 {
 	int *pivot, top, bottom;
 
@@ -58,7 +58,7 @@ int lomuto_partition(int *array, size_t size, int left, int right)
 }
 
 /**
- * lomuto_sort -  function is an implementation of the quicksort
+ * sort -  function is an implementation of the quicksort
  * algorithm using recursion and the Lomuto partition scheme
  * @array: An array of integers to sort
  * @size: The size of the array
@@ -66,15 +66,15 @@ int lomuto_partition(int *array, size_t size, int left, int right)
  * @right: The ending index of the array partition to order
  * Description: Uses the Lomuto partition scheme
  */
-void lomuto_sort(int *array, size_t size, int left, int right)
+void sort(int *array, size_t size, int left, int right)
 {
 	int a;
 
 	if (right - left > 0)
 	{
-		a = lomuto_partition(array, size, left, right);
-		lomuto_sort(array, size, left, a - 1);
-		lomuto_sort(array, size, a + 1, right);
+		a = partition(array, size, left, right);
+		sort(array, size, left, a - 1);
+		sort(array, size, a + 1, right);
 	}
 }
 
@@ -92,5 +92,5 @@ void quick_sort(int *array, size_t size)
 	if (array == NULL || size < 2)
 		return;
 
-	lomuto_sort(array, size, 0, size - 1);
+	sort(array, size, 0, size - 1);
 }
