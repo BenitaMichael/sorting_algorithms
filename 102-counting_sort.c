@@ -30,8 +30,7 @@ int maximum_number(int *array, int size)
  */
 void counting_sort(int *array, size_t size)
 {
-	int max, i;
-	int *count, *sorted;
+	int max, i, *count, *sorted;
 
 	if (array == NULL || size < 2)
 		return;
