@@ -24,6 +24,7 @@ void swap_function(int *a, int *b)
 /**
  * lomuto_partition - function used to perform the Lomuto partition scheme
  * on a subset of an array of integers
+ * @array: represents the array
  * @size: size of the array
  * @left: The starting index of the subset to order
  * @right: The ending index of the subset to order

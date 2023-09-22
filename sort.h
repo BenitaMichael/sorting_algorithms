@@ -4,6 +4,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/* Direction macros for bitonic sort */
+#define UP 0
+#define DOWN 1
+
 /**
  * enum bool - Representation of Boolean values
  * @false: Equals (0)
