@@ -1,5 +1,4 @@
 #include "sort.h"
-
 /**
  * swap_function - function to swap two integers in an
  * array using a temp storage

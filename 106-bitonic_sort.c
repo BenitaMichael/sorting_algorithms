@@ -1,5 +1,4 @@
 #include "sort.h"
-
 void swap_function(int *a, int *b);
 void merge(int *array, size_t size, size_t start, size_t seq,
 		char flow);

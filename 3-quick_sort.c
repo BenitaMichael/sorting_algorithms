@@ -1,5 +1,4 @@
 #include "sort.h"
-
 void swap_function(int *a, int *b);
 int partition(int *array, size_t size, int left, int right);
 void sort(int *array, size_t size, int left, int right);
