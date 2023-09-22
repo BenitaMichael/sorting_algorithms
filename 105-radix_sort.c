@@ -1,5 +1,4 @@
 #include "sort.h"
-
 int maximum_number(int *array, int size);
 void counting_sorting(int *array, size_t size, int sig, int *buff);
 void radix_sort(int *array, size_t size);
