@@ -1,5 +1,4 @@
 #include "sort.h"
-
 /**
  * maximum_number - function to get the maximum value in an
  * array of integers
