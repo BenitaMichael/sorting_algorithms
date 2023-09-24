@@ -147,6 +147,7 @@ void sort_deck(deck_node_t **deck)
 	
 	if (deck == NULL || *deck == NULL || (*deck)->next == NULL)
 
+		return;
 	inserting_sort_deck_use(deck);
 	inserting_sort_deck_type(deck);
 
