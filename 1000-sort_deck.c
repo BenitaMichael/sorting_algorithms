@@ -85,10 +85,4 @@ void inserting_sort_deck_value(deck_node_t **deck)
 	{
 		tmp = rep->next;
 		shove = rep->prev;
-		while (shove != NULL &&
-		       shove->card->kind == rep->card->kind &&
-		       get_value(shove) > get_value(rep))
-		{
-			shove->next = rep->next;
-			if (rep->next != NULL)
-				rep->next->prev  
+		while (shove != NULL  
