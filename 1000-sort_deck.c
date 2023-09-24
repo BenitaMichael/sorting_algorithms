@@ -1,6 +1,6 @@
 #include "deck.h"
 
-int _strcmp(const void *a, const void *b);
+int _strcmp(const char *a, const char *b);
 char get_value(deck_node_t *card);
 void inserting_sort_deck_use(deck_node_t **deck);
 void inserting_sort_deck_type(deck_node_t **deck);
@@ -34,38 +34,38 @@ int _strcmp(const char *a, const char *b)
  * get_value - Fucnction that gets the number
  * value of cards
  *
- * @cards: Pointer to deck_node_t
+ * @card: Pointer to deck_node_t
  *
  * Return: the  number value of cards
  */
 
-char get_value(deck_node_t *cards)
+char get_value(deck_node_t *card)
 {
-	if (_strcmp(cards->cards->value, "Ace") == 0)
+	if (_strcmp(card->card->value, "Ace") == 0)
 		return (0);
-	if (_strcmp(cards->cards->value, "1") == 0)
+	if (_strcmp(card->card->value, "1") == 0)
 		return (1);
-	if (_strcmp(cards->cards->value, "2") == 0)
+	if (_strcmp(card->card->value, "2") == 0)
 		return (2);
-	if (_strcmp(cards->cards->value, "3") == 0)
+	if (_strcmp(card->card->value, "3") == 0)
 		return (3);
-	if (_strcmp(cards->cards->value, "4") == 0)
+	if (_strcmp(card->card->value, "4") == 0)
 		return (4);
-	if (_strcmp(cards->cards->value, "5") == 0)
+	if (_strcmp(card->card->value, "5") == 0)
 		return (5);
-	if (_strcmp(cards->cards->value, "6") == 0)
+	if (_strcmp(card->card->value, "6") == 0)
 		return (6);
-	if (_strcmp(cards->cards->value, "7") == 0)
+	if (_strcmp(card->card->value, "7") == 0)
 		return (7);
-	if (_strcmp(cards->cards->value, "8") == 0)
+	if (_strcmp(card->card->value, "8") == 0)
 		return (8);
-	if (_strcmp(cards->cards->value, "9") == 0)
+	if (_strcmp(card->card->value, "9") == 0)
 		return (9);
-	if (_strcmp(cards->cards->value, "10") == 0)
+	if (_strcmp(card->card->value, "10") == 0)
 		return (10);
-	if (_strcmp(cards->cards->value, "Jack") == 0)
+	if (_strcmp(card->card->value, "Jack") == 0)
 		return (11);
-	if (_strcmp(cards->cards->value, "Queen") == 0)
+	if (_strcmp(card->card->value, "Queen") == 0)
 		return (12);
 	return (13);
 }
@@ -86,7 +86,7 @@ void inserting_sort_deck_use(deck_node_t **deck)
 		tmp = rep->next;
 		shove = rep->prev;
 		while (shove != NULL &&
-		       shove->cards->type == rep->cards->type &&
+		       shove->card->kind == rep->card->kind &&
 		       get_value(shove) > get_value(rep))
 		{
 			shove->next = rep->next;
@@ -118,7 +118,7 @@ void inserting_sort_deck_type(deck_node_t **deck)
 	{
 		tmp = rep->next;
 		shove = rep->prev;
-		while (shove != NULL && shove->cards->type > rep->cards->type)
+		while (shove != NULL && shove->card->kind > rep->card->kind)
 		{
 			shove->next = rep->next;
 			if (rep->next != NULL)
@@ -149,4 +149,5 @@ void sort_deck(deck_node_t **deck)
 
 	inserting_sort_deck_use(deck);
 	inserting_sort_deck_type(deck);
+
 }
