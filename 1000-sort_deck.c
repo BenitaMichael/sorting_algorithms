@@ -112,20 +112,4 @@ void inserting_sort_deck_value(deck_node_t **deck)
  */
 void inserting_sort_deck_kind(deck_node_t **deck)
 {
-	deck_node_t *rep, *shove, *tmp;
-
-	for (rep = (*deck)->next; rep != NULL; rep = tmp)
-	{
-		tmp = rep->next;
-		shove = rep->prev;
-		while (shove != NULL && shove->card->kind > rep->card->kind)
-		{
-			shove->next = rep->next;
-			if (rep->next != NULL)
-				rep->next->prev = shove;
-			rep->prev = shove->prev;
-			rep->next = shove;
-			if (shove->prev != NULL)
-				shove->prev->next = rep;
-			else
-				*deck = rep 
+	deck_node_t *rep, *shov 
