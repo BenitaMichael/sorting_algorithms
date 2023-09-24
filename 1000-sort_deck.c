@@ -145,4 +145,4 @@ void inserting_sort_deck_kind(deck_node_t **deck)
 void sort_deck(deck_node_t **deck)
 {
 	
-	if (deck == NULL || *deck == NULL || (*deck)->next == N
+	if (deck 
