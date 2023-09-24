@@ -79,27 +79,27 @@ char get_value(deck_node_t *card)
  */
 void inserting_sort_deck_value(deck_node_t **deck)
 {
-	deck_node_t *rep, *shove, *tmp;
+	deck_node_t *iter, *insert, *tmp;
 
-	for (rep = (*deck)->next; rep != NULL; rep = tmp)
+	for (iter = (*deck)->next; iter != NULL; iter = tmp)
 	{
-		tmp = rep->next;
-		shove = rep->prev;
-		while (shove != NULL &&
-		       shove->card->kind == rep->card->kind &&
-		       get_value(shove) > get_value(rep))
+		tmp = iter->next;
+		insert = iter->prev;
+		while (insert != NULL &&
+		       insert->card->kind == iter->card->kind &&
+		       get_value(insert) > get_value(iter))
 		{
-			shove->next = rep->next;
-			if (rep->next != NULL)
-				rep->next->prev = shove;
-			rep->prev = shove->prev;
-			rep->next = shove;
-			if (shove->prev != NULL)
-				shove->prev->next = rep;
+			insert->next = iter->next;
+			if (iter->next != NULL)
+				iter->next->prev = insert;
+			iter->prev = insert->prev;
+			iter->next = insert;
+			if (insert->prev != NULL)
+				insert->prev->next = iter;
 			else
-				*deck = rep;
-			shove->prev = rep;
-			shove = rep->prev;
+				*deck = iter;
+			insert->prev = iter;
+			insert = iter->prev;
 		}
 	}
 }
@@ -112,25 +112,25 @@ void inserting_sort_deck_value(deck_node_t **deck)
  */
 void inserting_sort_deck_kind(deck_node_t **deck)
 {
-	deck_node_t *rep, *shove, *tmp;
+	deck_node_t *iter, *insert, *tmp;
 
-	for (rep = (*deck)->next; rep != NULL; rep = tmp)
+	for (iter = (*deck)->next; iter != NULL; iter = tmp)
 	{
-		tmp = rep->next;
-		shove = rep->prev;
-		while (shove != NULL && shove->card->kind > rep->card->kind)
+		tmp = iter->next;
+		insert = iter->prev;
+		while (insert != NULL && insert->card->kind > iter->card->kind)
 		{
-			shove->next = rep->next;
-			if (rep->next != NULL)
-				rep->next->prev = shove;
-			rep->prev = shove->prev;
-			rep->next = shove;
-			if (shove->prev != NULL)
-				shove->prev->next = rep;
+			insert->next = iter->next;
+			if (iter->next != NULL)
+				iter->next->prev = insert;
+			iter->prev = insert->prev;
+			iter->next = insert;
+			if (insert->prev != NULL)
+				insert->prev->next = iter;
 			else
-				*deck = rep;
-			shove->prev = rep;
-			shove = rep->prev;
+				*deck = iter;
+			insert->prev = iter;
+			insert = iter->prev;
 		}
 	}
 }
