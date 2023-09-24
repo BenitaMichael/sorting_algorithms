@@ -38,10 +38,11 @@ typedef struct deck_node_s
     struct deck_node_s *next;
 } deck_node_t;
 
-int _strcmp(const void *a, const void *b);
+
+int _strcmp(const char *a, const char *b);
 char get_value(deck_node_t *card);
-void sort_deck(deck_node_t **deck);
-void insert_sort_deck_kind(deck_node_t **deck);
+void inserting_sort_deck_value(deck_node_t **deck);
+void inserting_sort_deck_kind(deck_node_t **deck);
 void sort_deck(deck_node_t **deck);
 
 #endif /*DECK_H*/
