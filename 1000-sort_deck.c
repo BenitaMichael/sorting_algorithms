@@ -1,5 +1,8 @@
 #include "deck.h"
 
+int compare_cards(const void *a, const void *b);
+void sort_deck(deck_node_t **deck);
+
 /**
  * compare_cards - function that compares cards to be sorted
  * @a: The first string input to be compared
