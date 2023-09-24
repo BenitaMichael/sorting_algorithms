@@ -1,62 +1,78 @@
 #include "deck.h"
 
-int compare_cards(const void *a, const void *b);
+int _strcmp(const void *a, const void *b);
+char get_value(deck_node_t *card);
 void sort_deck(deck_node_t **deck);
+void insert_sort_deck_kind(deck_node_t **deck);
+void insert_sort_deck_value(deck_node_t **deck);
+
 
 /**
- * compare_cards - function that compares cards to be sorted
- * @a: The first string input to be compared
- * @b: The second string input to be compared
+ * _strcmp - function that compares cards to be sorted
+ * @value1: The first string input to be compared
+ * @value2: The second string input to be compared
  * Return: Positive byte difference if value1 >value2 or (0) if
  * (value1 == value2) or Negative byte difference if value1 < value2
  */
 
-int compare_cards(const void *a, const void *b)
+int _strcmp(const char *value1, const void *value2)
 {
-	int value1, value2;
+	while (*value1 && *value2 && *value1 == *value2)
+	{
+		++value1;
+		++value2;
+	}
 
-	const card_t *card1 = (*(const deck_node_t **)a)->card;
-	const card_t *card2 = (*(const deck_node_t **)b)->card;
-
-	if (card1->kind < card2->kind)
-		return (-1);
-	else if (card1->kind > card2->kind)
-		return (1);
-
-		if (strcmp(card1->value, "Ace") == 0)
-			value1 = 1;
-		if (strcmp(card1->value, "Jack") == 0)
-			value1 = 11;
-		if (strcmp(card1->value, "Queen") == 0)
-			value1 = 12;
-		if (strcmp(card1->value, "King") == 0)
-			value1 = 13;
-		else
-			value1 = atoi(card1->value);
-
-		if (strcmp(card2->value, "Ace") == 0)
-			value2 = 1;
-		if (strcmp(card2->value, "Jack") == 0)
-			value2 = 11;
-		if (strcmp(card2->value, "Queen") == 0)
-			value2 = 12;
-		if (strcmp(card2->value, "King") == 0)
-			value2 = 13;
-		else
-			value2 = atoi(card2->value);
-
-		if (value1 < value2)
-			return (-1);
-		else if (value1 > value2)
-			return (1);
-		else
-			return (0);
+	if (*value1 != *value2)
+		return (*value1 - *value2);
+	return (0);
 }
 
 /**
+ * get_value - Fucnction that gets the number
+ * value of cards
+ *
+ * @cards: Pointer to deck_node_t
+ *
+ * Return: return the  number value of cards
+ */
+
+char get_value(deck_node_t *cards)
+{
+	if (_strcmp(cards->cards->value, "Ace") == 0)
+		return (0);
+	if (_strcmp(cards->cards->value, "1") == 0)
+		return (1);
+	if (_strcmp(cards->cards->value, "2") == 0)
+		return (2);
+	if (_strcmp(cards->cards->value, "3") == 0)
+		return (3);
+	if (_strcmp(cards->cards->value, "4") == 0)
+		return (4);
+	if (_strcmp(cards->cards->value, "5") == 0)
+		return (5);
+	if (_strcmp(cards->cards->value, "6") == 0)
+		return (6);
+	if (_strcmp(cards->cards->value, "7") == 0)
+		return (7);
+	if (_strcmp(cards->cards->value, "8") == 0)
+		return (8);
+	if (_strcmp(cards->cards->value, "9") == 0)
+		return (9);
+	if (_strcmp(cards->cards->value, "10") == 0)
+		return (10);
+	if (_strcmp(cards->cards->value, "Jack") == 0)
+		return (11);
+	if (_strcmp(cards->cards->value, "Queen") == 0)
+		return (12);
+	return (13);
+}
+
+
+/**
  * sort_deck - function that sorts a deck of cards
+ *
  * @deck: Pointer to address deck_node_t doubly-linked list
- * Return: returns nothing (void)
  */
 
 void sort_deck(deck_node_t **deck)
@@ -83,4 +99,3 @@ void sort_deck(deck_node_t **deck)
 	deck_array[51]->next = NULL;
 	*deck = deck_array[0];
 }
-
