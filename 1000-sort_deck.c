@@ -1,16 +1,11 @@
 #include "deck.h"
 
 /**
- * compare_cards - Function that compares caards
- * to be sorted
- * @a: The first string to be compared
- *
- * @b: The second string to be compared
- *
- * Return: Positive byte difference
- *  if value1 >value2
- *  or 0 if value1 == value2
- *  or Negative byte difference if value1 < value2
+ * compare_cards - function that compares cards to be sorted
+ * @a: The first string input to be compared
+ * @b: The second string input to be compared
+ * Return: Positive byte difference if value1 >value2 or (0) if
+ * (value1 == value2) or Negative byte difference if value1 < value2
  */
 
 int compare_cards(const void *a, const void *b)
@@ -56,11 +51,9 @@ int compare_cards(const void *a, const void *b)
 }
 
 /**
- * sort_deck - Function that sorts the decks from
- * spades to diamonds
- * Ace to King
- *
+ * sort_deck - function that sorts a deck of cards
  * @deck: Pointer to address deck_node_t doubly-linked list
+ * Return: returns nothing (void)
  */
 
 void sort_deck(deck_node_t **deck)
