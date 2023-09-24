@@ -137,6 +137,4 @@ void inserting_sort_deck_kind(deck_node_t **deck)
 
 
 /**
- * sort_deck - function that sorts a deck of cards
- *
- * @deck: Pointer to address deck_node_t doubly-linke 
+ * sort_deck - function that sor 
