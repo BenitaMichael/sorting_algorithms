@@ -25,22 +25,22 @@ int compare_cards(const void *a, const void *b)
 
 		if (strcmp(card1->value, "Ace") == 0)
 			value1 = 1;
-		else if (strcmp(card1->value, "Jack") == 0)
+		if (strcmp(card1->value, "Jack") == 0)
 			value1 = 11;
-		else if (strcmp(card1->value, "Queen") == 0)
+		if (strcmp(card1->value, "Queen") == 0)
 			value1 = 12;
-		else if (strcmp(card1->value, "King") == 0)
+		if (strcmp(card1->value, "King") == 0)
 			value1 = 13;
 		else
 			value1 = atoi(card1->value);
 
 		if (strcmp(card2->value, "Ace") == 0)
 			value2 = 1;
-		else if (strcmp(card2->value, "Jack") == 0)
+		if (strcmp(card2->value, "Jack") == 0)
 			value2 = 11;
-		else if (strcmp(card2->value, "Queen") == 0)
+		if (strcmp(card2->value, "Queen") == 0)
 			value2 = 12;
-		else if (strcmp(card2->value, "King") == 0)
+		if (strcmp(card2->value, "King") == 0)
 			value2 = 13;
 		else
 			value2 = atoi(card2->value);
