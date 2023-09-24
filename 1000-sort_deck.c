@@ -106,8 +106,4 @@ void inserting_sort_deck_value(deck_node_t **deck)
 
 
 /**
- * inserting_sort_deck_type - Function that sorts the deck of cards
- *
- * @deck:  Pointer to address deck_node_t doubly-linked list
- */
-void insertinv 
+ * inserting_sort_deck_type - Functio
