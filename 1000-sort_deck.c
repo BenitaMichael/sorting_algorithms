@@ -128,13 +128,4 @@ void inserting_sort_deck_kind(deck_node_t **deck)
 			if (shove->prev != NULL)
 				shove->prev->next = rep;
 			else
-				*deck = rep;
-			shove->prev = rep;
-			shove = rep->prev;
-		}
-	}
-}
-
-
-/**
- * sort_deck - function that sor 
+				*deck = rep 
