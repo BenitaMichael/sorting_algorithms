@@ -2,8 +2,8 @@
 
 int _strcmp(const char *a, const char *b);
 char get_value(deck_node_t *card);
-void inserting_sort_deck_use(deck_node_t **deck);
-void inserting_sort_deck_type(deck_node_t **deck);
+void inserting_sort_deck_value(deck_node_t **deck);
+void inserting_sort_deck_kind(deck_node_t **deck);
 void sort_deck(deck_node_t **deck);
 
 /**
@@ -72,12 +72,12 @@ char get_value(deck_node_t *card)
 
 
 /**
- * inserting_sort_deck_use - The function that sorts the deck of cards
+ * inserting_sort_deck_value - The function that sorts the deck of cards
  *  from spades to diamonds from ace to king.
  *
  * @deck:  Pointer to address deck_node_t doubly-linked list
  */
-void inserting_sort_deck_use(deck_node_t **deck)
+void inserting_sort_deck_value(deck_node_t **deck)
 {
 	deck_node_t *rep, *shove, *tmp;
 
@@ -110,7 +110,7 @@ void inserting_sort_deck_use(deck_node_t **deck)
  *
  * @deck:  Pointer to address deck_node_t doubly-linked list
  */
-void inserting_sort_deck_type(deck_node_t **deck)
+void inserting_sort_deck_kind(deck_node_t **deck)
 {
 	deck_node_t *rep, *shove, *tmp;
 
@@ -148,7 +148,7 @@ void sort_deck(deck_node_t **deck)
 	if (deck == NULL || *deck == NULL || (*deck)->next == NULL)
 
 		return;
-	inserting_sort_deck_use(deck);
-	inserting_sort_deck_type(deck);
+	inserting_sort_deck_value(deck);
+	inserting_sort_deck_kind(deck);
 
 }
