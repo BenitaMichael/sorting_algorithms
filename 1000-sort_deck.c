@@ -91,10 +91,4 @@ void inserting_sort_deck_value(deck_node_t **deck)
 		{
 			shove->next = rep->next;
 			if (rep->next != NULL)
-				rep->next->prev = shove;
-			rep->prev = shove->prev;
-			rep->next = shove;
-			if (shove->prev != NULL)
-				shove->prev->next = rep;
-			else
-				*deck = 
+				rep->next->prev  
