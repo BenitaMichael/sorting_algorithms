@@ -110,6 +110,4 @@ void inserting_sort_deck_value(deck_node_t **deck)
  *
  * @deck:  Pointer to address deck_node_t doubly-linked list
  */
-void inserting_sort_deck_kind(deck_node_t **deck)
-{
-	deck_node_t *rep, *shov 
+void insertinv 
