@@ -2,10 +2,9 @@
 
 int _strcmp(const void *a, const void *b);
 char get_value(deck_node_t *card);
+void inserting_sort_deck_use(deck_node_t **deck);
+void inserting_sort_deck_type(deck_node_t **deck);
 void sort_deck(deck_node_t **deck);
-void insert_sort_deck_kind(deck_node_t **deck);
-void insert_sort_deck_value(deck_node_t **deck);
-
 
 /**
  * _strcmp - function that compares cards to be sorted
@@ -15,12 +14,12 @@ void insert_sort_deck_value(deck_node_t **deck);
  * (value1 == value2) or Negative byte difference if value1 < value2
  */
 
-int _strcmp(const char *value1, const void *value2)
+int _strcmp(const char *value1, const char *value2)
 {
 	while (*value1 && *value2 && *value1 == *value2)
 	{
-		++value1;
-		++value2;
+		value1++;
+		value2++;
 	}
 
 	if (*value1 != *value2)
@@ -34,7 +33,7 @@ int _strcmp(const char *value1, const void *value2)
  *
  * @cards: Pointer to deck_node_t
  *
- * Return: return the  number value of cards
+ * Return: the  number value of cards
  */
 
 char get_value(deck_node_t *cards)
@@ -70,6 +69,71 @@ char get_value(deck_node_t *cards)
 
 
 /**
+ * inserting_sort_deck_use - The function that sorts the deck of cards
+ *  from spades to diamonds from ace to king.
+ *
+ * @deck:  Pointer to address deck_node_t doubly-linked list
+ */
+void inserting_sort_deck_use(deck_node_t **deck)
+{
+	deck_node_t *rep, *shove, *tmp;
+
+	for (rep = (*deck)->next; rep != NULL; rep = tmp)
+	{
+		tmp = rep->next;
+		shove = rep->prev;
+		while (shove != NULL &&
+		       shove->cards->type == rep->cards->type &&
+		       get_value(shove) > get_value(rep))
+		{
+			shove->next = rep->next;
+			if (rep->next != NULL)
+				rep->next->prev = shove;
+			rep->prev = shove->prev;
+			rep->next = shove;
+			if (shove->prev != NULL)
+				shove->prev->next = rep;
+			else
+				*deck = rep;
+			shove->prev = rep;
+			shove = rep->prev;
+		}
+	}
+}
+
+
+/**
+ * inserting_sort_deck_type - Function that sorts the deck of cards
+ *
+ * @deck:  Pointer to address deck_node_t doubly-linked list
+ */
+void inserting_sort_deck_type(deck_node_t **deck)
+{
+	deck_node_t *rep, *shove, *tmp;
+
+	for (rep = (*deck)->next; rep != NULL; rep = tmp)
+	{
+		tmp = rep->next;
+		shove = rep->prev;
+		while (shove != NULL && shove->cards->type > rep->cards->type)
+		{
+			shove->next = rep->next;
+			if (rep->next != NULL)
+				rep->next->prev = shove;
+			rep->prev = shove->prev;
+			rep->next = shove;
+			if (shove->prev != NULL)
+				shove->prev->next = rep;
+			else
+				*deck = rep;
+			shove->prev = rep;
+			shove = rep->prev;
+		}
+	}
+}
+
+
+/**
  * sort_deck - function that sorts a deck of cards
  *
  * @deck: Pointer to address deck_node_t doubly-linked list
@@ -77,25 +141,9 @@ char get_value(deck_node_t *cards)
 
 void sort_deck(deck_node_t **deck)
 {
-	int i = 0;
+	
+	if (deck == NULL || *deck == NULL || (*deck)->next == NULL)
 
-	deck_node_t *node = *deck;
-	deck_node_t *deck_array[52];
-
-	while (node != NULL)
-	{
-		deck_array[i++] = node;
-		node = node->next;
-	}
-
-	qsort(deck_array, 52, sizeof(deck_node_t *), compare_cards);
-
-	for (i = 0; i < 51; i++)
-	{
-		deck_array[i]->next = deck_array[i + 1];
-		deck_array[i + 1]->prev = deck_array[i];
-	}
-	deck_array[0]->prev = NULL;
-	deck_array[51]->next = NULL;
-	*deck = deck_array[0];
+	inserting_sort_deck_use(deck);
+	inserting_sort_deck_type(deck);
 }
